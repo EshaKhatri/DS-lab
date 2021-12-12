@@ -1,68 +1,62 @@
-
 #include <stdio.h>
 #include<stdlib.h>
 #define n 5
 int front=-1;
 int rear=-1;
 int arr[n];
-int isFull()
-{
-    if((rear+1)%n==front)
-    {
-        return 1;
-    }
-    return 0;
+
+void enqueue(int x){
+if(front==-1&&rear==-1){
+    front=0;
+    rear=0;
+    arr[rear]=x;
+    printf("\n Inserted -> %d", arr[rear]);
+}
+else if ((rear+1)%n==front){
+    printf("Queue overflow!!");
+}
+else{
+    rear=(rear+1)%n;
+    arr[rear]=x;
+    printf("\n Inserted -> %d", arr[rear]);
+}
 }
 
-int isEmpty()
-{
-    if(front==-1 && rear==-1)
-    {
-        return 1;
+void dqueue(){
+    if(front==-1&&rear==-1){
+    printf("Queue underflow!!");
     }
-    return 0;
+    else if(front==rear){
+        printf("\n Deleted element -> %d \n",arr[front]);
+        front=-1;
+        rear=-1;
+    }
+    else{
+        printf("\n Deleted element -> %d \n",arr[front]);
+        front=(front+1)%n;
+    }
 }
-void display()
-{
-    int i;        
-    for(i=front;i!=rear;i=(i+1)%n)
+
+void display(){
+     if(front==-1&&rear==-1){
+    printf("Queue underflow!!");
+    }
+
+    else if ((rear+1)%n==front){
+    printf("Queue overflow!!");
+    }
+   else {
+    int i ;
+        for(i=front;i!=rear;i=(i+1)%n)
     {
         printf("%d\t",arr[i]);
     }
         printf("%d",arr[i]);
 
-}
-void enqueue(int x)
-{
-    if(isFull())
-    {
-        printf("\n Stack is full");
-        return;
-    }
-    else if(isEmpty())
-    {
-        front=rear=0;
-    }
-    else
-        rear=(rear+1)%n;
-    arr[rear]=x;
+  }
+
 }
 
-void dequeue()
-{
-    if(isEmpty())
-    {
-        printf("\nQueue is empty!");
-        return;
-    }
-    else if((front+1)%n==rear)
-    {
-        front=rear=-1;
-    }
-    else{
-        front=(front+1)%n;
-    }
-}
 int main()
 {
     int x,c;
@@ -79,15 +73,16 @@ int main()
                 enqueue(x);
                 break;
              }
-            case 2:dequeue();
+            case 2:dqueue();
             break;
             case 3:display();
             break;
             case 4:exit(0);
             default:printf("\nEnter the valid input");
-           
-           
+
+
         }
     }
     return 0;
 }
+
