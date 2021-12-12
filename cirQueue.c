@@ -42,9 +42,6 @@ void display(){
     printf("Queue underflow!!");
     }
 
-    else if ((rear+1)%n==front){
-    printf("Queue overflow!!");
-    }
    else {
     int i ;
         for(i=front;i!=rear;i=(i+1)%n)
