@@ -24,7 +24,7 @@ int main()
                 printf("\n 3.Delete from beginning      ");
                 printf("\n 4.Delete from the end        ");
                 printf("\n 5.Delete from specified position     ");
-                printf("\n 6.Exit       n");
+                printf("\n 6.Exit       ");
                 printf("\nEnter your choice:");
                 scanf("%d",&choice);
                 switch(choice)
